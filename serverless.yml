@@ -7,11 +7,21 @@ provider:
   runtime: nodejs18.x
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
+  environment:
+    MASTER_TABLE: master-table-${self:provider.stage}
 
 functions:
-  createOrder:
-    handler: ./src/createOrder.hello
-    events:
-      - httpApi:
-          path: /orders/create
-          method: get
+  createOrder: ${file(serverless/lambda/createOrder.yml)}
+  getOrder: ${file(serverless/lambda/getOrder.yml)}
+  queryAllOrders: ${file(serverless/lambda/queryAllOrders.yml)}
+  updateOrder: ${file(serverless/lambda/updateOrder.yml)}
+  deleteOrder: ${file(serverless/lambda/deleteOrder.yml)}
+
+resources:
+  - Resources:
+      MasterTable: ${file(serverless/dynamodb/masterTable.yml)}
+      CreateOrderRole: ${file(serverless/iam/createOrderRole.yml)}
+      GetOrderRole: ${file(serverless/iam/getOrderRole.yml)}
+      QueryAllOrdersRole: ${file(serverless/iam/queryAllOrdersRole.yml)}
+      UpdateOrderRole: ${file(serverless/iam/updateOrderRole.yml)}
+      DeleteOrderRole: ${file(serverless/iam/deleteOrderRole.yml)}

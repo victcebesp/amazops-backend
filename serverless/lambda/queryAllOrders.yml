@@ -1,0 +1,6 @@
+handler: ./src/handler/queryAllOrders.handler
+role: QueryAllOrdersRole
+events:
+  - httpApi:
+      path: /orders
+      method: get

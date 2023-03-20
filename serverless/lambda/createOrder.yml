@@ -1,0 +1,6 @@
+handler: ./src/handler/createOrder.handler
+role: CreateOrderRole
+events:
+  - httpApi:
+      path: /orders
+      method: post

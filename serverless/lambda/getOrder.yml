@@ -1,0 +1,6 @@
+handler: ./src/handler/getOrder.handler
+role: GetOrderRole
+events:
+  - httpApi:
+      path: /orders/{orderId}
+      method: get

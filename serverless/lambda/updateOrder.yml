@@ -1,0 +1,6 @@
+handler: ./src/handler/updateOrder.handler
+role: UpdateOrderRole
+events:
+  - httpApi:
+      path: /orders/{orderId}
+      method: put

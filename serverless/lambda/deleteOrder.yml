@@ -1,0 +1,6 @@
+handler: ./src/handler/deleteOrder.handler
+role: DeleteOrderRole
+events:
+  - httpApi:
+      path: /orders/{orderId}
+      method: delete

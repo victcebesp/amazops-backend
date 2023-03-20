@@ -4,7 +4,7 @@
     "!unitsAmount": 200,
     "!destinationCountry": "SPAIN",
     "!createdAt": "2022-03-15 13:50:00Z",
-    "status": "WAITING_FOR_PRODUCTION",
+    "state": 0,
     "initialPayment": 0.3,
     "productionDays": 15,
     "productionStart": "2022-03-15 13:50:00Z",
