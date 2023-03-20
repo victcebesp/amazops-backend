@@ -1,0 +1,16 @@
+{
+  "name": "amazops-backend",
+  "version": "1.0.0",
+  "description": "This is the backend of Amazops.app, a saas for amazon fba sellers to handle all the business operations",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sls deploy --aws-profile amazops"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.294.0",
+    "@aws-sdk/lib-dynamodb": "^3.294.0"
+  }
+}

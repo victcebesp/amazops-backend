@@ -1,0 +1,18 @@
+const WAITING_INITIAL_PAYMENT = 'Waiting for initial payment'
+const CREATE_SKU_LABELS = 'Create SKU labels'
+const SHARE_SKU_LABELS_WITH_PROVIDER = 'Share SKU labels with provider'
+const CONFIRM_PRODUCTION_DAYS = 'Production deadline'
+const WAITING_FOR_PRODUCTION = 'Waiting for production'
+const WAITING_BALANCE_PAYMENT = 'Waiting for balance payment'
+const SHIPPING_TO_TRANSPORT_AGENT = 'Shipping to transport agent'
+const WAITING_SHIPPING_PAYMENT = 'Waiting for shipping payment'
+const SHIPPING = 'Shipping'
+
+module.exports = {
+    WAITING_INITIAL_PAYMENT: WAITING_INITIAL_PAYMENT,
+    WAITING_FOR_PRODUCTION: WAITING_FOR_PRODUCTION,
+    WAITING_BALANCE_PAYMENT: WAITING_BALANCE_PAYMENT,
+    SHIPPING_TO_TRANSPORT_AGENT: SHIPPING_TO_TRANSPORT_AGENT,
+    WAITING_SHIPPING_PAYMENT: WAITING_SHIPPING_PAYMENT,
+    SHIPPING: SHIPPING,
+}

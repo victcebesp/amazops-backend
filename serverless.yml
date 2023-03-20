@@ -1,0 +1,17 @@
+service: amazops-backend
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+functions:
+  createOrder:
+    handler: ./src/createOrder.hello
+    events:
+      - httpApi:
+          path: /orders/create
+          method: get

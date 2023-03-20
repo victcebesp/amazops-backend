@@ -1,0 +1,38 @@
+{
+    "!orderId": "",
+    "!sku": "",
+    "!unitsAmount": 200,
+    "!destinationCountry": "SPAIN",
+    "!createdAt": "2022-03-15 13:50:00Z",
+    "status": "WAITING_FOR_PRODUCTION",
+    "initialPayment": 0.3,
+    "productionDays": 15,
+    "productionStart": "2022-03-15 13:50:00Z",
+    "shippingBoxes": [
+        {
+            "id": "1",
+            "weight": 5.4,
+            "height": 21,
+            "width": 21,
+            "length": 21
+        },
+        {
+            "id": "2",
+            "weight": 5.4,
+            "height": 21,
+            "width": 21,
+            "length": 21
+        }
+    ],
+    "stepsLogs": {
+        "WAITING_FOR_PRODUCTION": {
+            "completedAt": "2022-03-15 13:50:00Z",
+            "editedAt": "2022-03-15 13:50:00Z"
+        }
+    },
+    "transportAgentTrackingNumber": "123ñkj1ñ2k3j1ñ23",
+    "importTrackingNumber": "123ñkj1ñ2k3j1ñ23",
+    "importStart": "2022-03-15 13:50:00Z",
+    "importDays": 50,
+    "!importType": "SEA"
+}
