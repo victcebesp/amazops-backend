@@ -4,3 +4,5 @@ events:
   - httpApi:
       path: /orders
       method: get
+      authorizer:
+        name: jwtAuthorizer

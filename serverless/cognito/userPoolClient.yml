@@ -1,0 +1,22 @@
+Type: AWS::Cognito::UserPoolClient
+Properties: 
+  AllowedOAuthFlows: 
+    - implicit
+  AllowedOAuthFlowsUserPoolClient: True
+  CallbackURLs: 
+    - https://www.amazops.app
+  ClientName: ${self:provider.environment.USER_POOL_CLIENT}
+  SupportedIdentityProviders: 
+    - COGNITO
+  AllowedOAuthScopes:
+    - phone
+    - email
+    - openid
+  DefaultRedirectURI: https://www.amazops.app
+  ExplicitAuthFlows: 
+    - ALLOW_CUSTOM_AUTH
+    - ALLOW_REFRESH_TOKEN_AUTH
+    - ALLOW_USER_SRP_AUTH
+  LogoutURLs: 
+    - https://www.amazops.app/logout
+  UserPoolId: !Ref UserPool

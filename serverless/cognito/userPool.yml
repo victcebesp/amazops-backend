@@ -1,0 +1,17 @@
+Type: AWS::Cognito::UserPool
+Properties: 
+  AccountRecoverySetting: 
+    RecoveryMechanisms:
+      - Name: verified_email
+        Priority: 1
+  AliasAttributes: 
+    - email
+  EmailConfiguration: 
+    EmailSendingAccount: COGNITO_DEFAULT
+  MfaConfiguration: OFF
+  Schema: 
+    - Name: email
+      Required: true
+      Mutable: true
+  UserPoolName: ${self:provider.environment.USER_POOL}
+  AutoVerifiedAttributes: []

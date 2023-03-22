@@ -7,8 +7,18 @@ provider:
   runtime: nodejs18.x
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
+  httpApi:
+    authorizers:
+      jwtAuthorizer:
+        type: jwt
+        identitySource: $request.header.Authorization
+        issuerUrl: !Join ["", ["https://cognito-idp.${self:provider.region}.amazonaws.com/", !Ref UserPool]]
+        audience:
+          - !Ref UserPoolClient
   environment:
     MASTER_TABLE: master-table-${self:provider.stage}
+    USER_POOL: default-user-pool-${self:provider.stage}
+    USER_POOL_CLIENT: default-user-pool-client-${self:provider.stage}
 
 functions:
   createOrder: ${file(serverless/lambda/createOrder.yml)}
@@ -25,3 +35,6 @@ resources:
       QueryAllOrdersRole: ${file(serverless/iam/queryAllOrdersRole.yml)}
       UpdateOrderRole: ${file(serverless/iam/updateOrderRole.yml)}
       DeleteOrderRole: ${file(serverless/iam/deleteOrderRole.yml)}
+      UserPool: ${file(serverless/cognito/userPool.yml)}
+      UserPoolClient: ${file(serverless/cognito/userPoolClient.yml)}
+      UserPoolDomain: ${file(serverless/cognito/userPoolDomain.yml)}
