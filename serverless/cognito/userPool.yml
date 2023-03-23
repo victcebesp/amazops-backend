@@ -14,4 +14,7 @@ Properties:
       Required: true
       Mutable: true
   UserPoolName: ${self:provider.environment.USER_POOL}
-  AutoVerifiedAttributes: []
+  AutoVerifiedAttributes:
+    - email
+  VerificationMessageTemplate:
+    DefaultEmailOption: CONFIRM_WITH_CODE
