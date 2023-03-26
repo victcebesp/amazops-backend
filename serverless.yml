@@ -8,6 +8,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
   httpApi:
+    cors: true
     authorizers:
       jwtAuthorizer:
         type: jwt
