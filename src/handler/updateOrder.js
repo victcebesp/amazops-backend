@@ -1,5 +1,6 @@
 const { buildSuccessResponse, buildFailureResponse } = require('../utils/responseBuilder')
 const { updateOrder, getOrder } = require('../service/orders')
+const { validDestinationCountry, validImportType } = require('../utils/validators')
 
 module.exports.handler = async (event) => {
   console.log('Input event:', event)
@@ -24,12 +25,4 @@ const validateOrder = async (eventBody) => {
   if (!validDestinationCountry(newOrder.destinationCountry)) throw new Error('Invalid destination country')
   if (!validImportType(newOrder.importType)) throw new Error('Invalid import type')
   return newOrder
-}
-
-const validDestinationCountry = (inputDestinationCountry) => {
-  return ['SPAIN', 'UNITED_STATES', 'GERMANY', 'FRANCE', 'UNITED_KINGDOM'].includes(inputDestinationCountry)
-}
-
-const validImportType = (inputImportType) => {
-  return ['SHIP', 'TRUCK', 'TRAIN', 'PLANE'].includes(inputImportType)
 }
