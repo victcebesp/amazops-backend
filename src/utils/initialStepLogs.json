@@ -1,0 +1,41 @@
+{
+    "0": {
+        "name": "Waiting for initial payment"
+    },
+    "1": {
+        "name": "Create SKU labels"
+    },
+    "2": {
+        "name": "Share SKU labels"
+    },
+    "3": {
+        "name": "Need production info"
+    },
+    "4": {
+        "name": "On production"
+    },
+    "5": {
+        "name": "Need boxes info"
+    },
+    "6": {
+        "name": "Waiting for balance payment"
+    },
+    "7": {
+        "name": "Waiting to ship to transport agent"
+    },
+    "8": {
+        "name": "Share tracking number with transport agent"
+    },
+    "9": {
+        "name": "Create shipping plan on Amazon"
+    },
+    "10": {
+        "name": "Waiting for import payment"
+    },
+    "11": {
+        "name": "Add tracking number to Amazon"
+    },
+    "12": {
+        "name": "On transit"
+    }
+}

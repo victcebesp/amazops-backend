@@ -2,13 +2,15 @@ const { PutCommand, GetCommand, QueryCommand, DeleteCommand } = require('@aws-sd
 const moment = require('moment')
 const { v4: uuidv4 } = require('uuid')
 const { executeDynamodDBCommand } = require('../utils/commandExecutors')
+const initialStepLogs = require('../utils/initialStepLogs.json')
 
 const createOrder = async (userId, newOrder) => {
   const order = {
     ...newOrder,
     orderId: uuidv4(),
     createdAt: moment.utc().format(),
-    state: 0
+    state: 0,
+    stepsLogs: initialStepLogs
   }
   const input = {
     TableName: process.env.MASTER_TABLE,
