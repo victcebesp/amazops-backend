@@ -30,12 +30,21 @@
         "name": "Create shipping plan on Amazon"
     },
     "10": {
-        "name": "Waiting for import payment"
+        "name": "Share shipping labels"
     },
     "11": {
-        "name": "Add tracking number to Amazon"
+        "name": "Waiting for import payment"
     },
     "12": {
+        "name": "Ask for import tracking number"
+    },
+    "13": {
+        "name": "Add tracking number to Amazon"
+    },
+    "14": {
         "name": "On transit"
+    },
+    "15": {
+        "name": "Completed"
     }
 }
