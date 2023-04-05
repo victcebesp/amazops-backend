@@ -27,6 +27,7 @@ functions:
   queryAllOrders: ${file(serverless/lambda/queryAllOrders.yml)}
   updateOrder: ${file(serverless/lambda/updateOrder.yml)}
   deleteOrder: ${file(serverless/lambda/deleteOrder.yml)}
+  updateOrderEvents: ${file(serverless/lambda/updateOrderEvents.yml)}
 
 resources:
   - Resources:
@@ -36,6 +37,7 @@ resources:
       QueryAllOrdersRole: ${file(serverless/iam/queryAllOrdersRole.yml)}
       UpdateOrderRole: ${file(serverless/iam/updateOrderRole.yml)}
       DeleteOrderRole: ${file(serverless/iam/deleteOrderRole.yml)}
+      UpdateOrderEventsRole: ${file(serverless/iam/updateOrderEventsRole.yml)}
       UserPool: ${file(serverless/cognito/userPool.yml)}
       UserPoolClient: ${file(serverless/cognito/userPoolClient.yml)}
       UserPoolDomain: ${file(serverless/cognito/userPoolDomain.yml)}

@@ -1,0 +1,12 @@
+handler: ./src/handler/updateOrderEvents.handler
+role: UpdateOrderEventsRole
+events:
+  - stream:
+      type: dynamodb
+      batchSize: 1
+      startingPosition: LATEST
+      enabled: True
+      arn:
+        Fn::GetAtt:
+          - MasterTable
+          - StreamArn
