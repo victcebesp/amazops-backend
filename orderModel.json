@@ -4,24 +4,29 @@
     "!unitsAmount": 200,
     "!destinationCountry": "SPAIN",
     "!createdAt": "2022-03-15 13:50:00Z",
+    "!importType": "SEA",
     "state": 0,
     "initialPayment": 0.3,
-    "productionDays": 15,
-    "productionStart": "2022-03-15 13:50:00Z",
+    "productionDeadline": 15,
+    "productionStartDate": "2022-03-15 13:50:00Z",
     "shippingBoxes": [
         {
             "id": "1",
             "weight": 5.4,
             "height": 21,
             "width": 21,
-            "length": 21
+            "length": 21,
+            "numberOfBoxes": 21,
+            "units": 21
         },
         {
             "id": "2",
             "weight": 5.4,
             "height": 21,
             "width": 21,
-            "length": 21
+            "length": 21,
+            "numberOfBoxes": 21,
+            "units": 21
         }
     ],
     "stepsLogs": {
@@ -32,7 +37,6 @@
     },
     "transportAgentTrackingNumber": "123ñkj1ñ2k3j1ñ23",
     "importTrackingNumber": "123ñkj1ñ2k3j1ñ23",
-    "importStart": "2022-03-15 13:50:00Z",
-    "importDays": 50,
-    "!importType": "SEA"
+    "importStartDate": "2022-03-15 13:50:00Z",
+    "importDays": 50
 }
