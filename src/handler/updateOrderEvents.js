@@ -17,6 +17,7 @@ module.exports.handler = async (event) => {
         return buildSuccessResponse(200, error.message)
       })
   } catch (error) {
+    console.log(error)
     return buildSuccessResponse(200, error.message)
   }
 }
@@ -94,7 +95,7 @@ const generateOrderEvents = (order) => {
 }
 
 const getInitialPaymentDate = (order) => {
-  return order.stepsLogs.M['0'].completedAt
+  return order.stepsLogs['0'].completedAt
 }
 
 const updateEvents = (events, newEvent) => {
