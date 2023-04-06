@@ -88,7 +88,7 @@ const updateOrderEvents = async (userId, orderId, orderEvents) => {
     TableName: process.env.MASTER_TABLE,
     Item: {
       userId,
-      sortKey: `ORDER#${orderId}`,
+      sortKey: `ORDER_EVENTS#${orderId}`,
       orderEvents
     }
   }

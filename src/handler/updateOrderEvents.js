@@ -1,83 +1,91 @@
 const { updateOrderEvents } = require('../service/orders')
-const { buildSuccessResponse, buildFailureResponse } = require('../utils/responseBuilder')
+const { buildSuccessResponse } = require('../utils/responseBuilder')
 const moment = require('moment')
+const { unmarshall } = require('@aws-sdk/util-dynamodb')
 
 module.exports.handler = async (event) => {
   console.log(JSON.stringify(event))
   const record = event.Records[0]
   if (record.eventName === 'REMOVE') return buildSuccessResponse(200, '')
-  const order = record.dynamodb.NewImage
-  const orderEvents = generateOrderEvents(order)
-  return updateOrderEvents(order.userId.S, order.orderId.S, orderEvents)
-    .then(() => buildSuccessResponse(200, ''))
-    .catch(error => buildFailureResponse(500, error.message))
+  try {
+    const order = unmarshall(record.dynamodb.NewImage)
+    const orderEvents = generateOrderEvents(order)
+    return updateOrderEvents(order.userId, order.orderId, orderEvents)
+      .then(() => buildSuccessResponse(200, ''))
+      .catch(error => {
+        console.log(error)
+        return buildSuccessResponse(200, error.message)
+      })
+  } catch (error) {
+    return buildSuccessResponse(200, error.message)
+  }
 }
 
 const generateOrderEvents = (order) => {
   let events = {}
   if (order.importStartDate && order.importType) {
     const event = {
-      sku: order.sku.S,
-      eventTitle: `${order.sku.S} Import Start`,
-      eventDate: order.importStartDate.S,
+      sku: order.sku,
+      eventTitle: `${order.sku} Import Start`,
+      eventDate: order.importStartDate,
       eventType: 'Import',
-      orderId: order.orderId.S,
-      importType: order.importType.S
+      orderId: order.orderId,
+      importType: order.importType
     }
     events = updateEvents(events, event)
   }
   if (order.importStartDate && order.importDays) {
-    const eventDate = moment(order.importStartDate.S).add(order.importDays.N, 'day').utc().format()
+    const eventDate = moment(order.importStartDate).add(order.importDays, 'day').utc().format()
     const event = {
-      sku: order.sku.S,
-      eventTitle: `${order.sku.S} Import Ends`,
+      sku: order.sku,
+      eventTitle: `${order.sku} Import Ends`,
       eventDate,
       eventType: 'Import',
-      orderId: order.orderId.S,
-      importType: order.importType.S
+      orderId: order.orderId,
+      importType: order.importType
     }
     events = updateEvents(events, event)
   }
   if (order.productionStartDate) {
     const event = {
-      sku: order.sku.S,
-      eventTitle: `${order.sku.S} Production Start`,
-      eventDate: order.productionStartDate.S,
+      sku: order.sku,
+      eventTitle: `${order.sku} Production Start`,
+      eventDate: order.productionStartDate,
       eventType: 'Production',
-      orderId: order.orderId.S
+      orderId: order.orderId
     }
     events = updateEvents(events, event)
   }
   if (order.productionStartDate && order.productionDeadline) {
-    const eventDate = moment(order.productionStartDate.S).add(order.productionDeadline.N, 'day').utc().format()
+    const eventDate = moment(order.productionStartDate).add(order.productionDeadline, 'day').utc().format()
     const event = {
-      sku: order.sku.S,
-      eventTitle: `${order.sku.S} Production Ends`,
+      sku: order.sku,
+      eventTitle: `${order.sku} Production Ends`,
       eventDate,
       eventType: 'Production',
-      orderId: order.orderId.S
+      orderId: order.orderId
     }
     events = updateEvents(events, event)
   }
   const initialPaymentDate = getInitialPaymentDate(order)
   if (order.initialPayment && initialPaymentDate) {
     const event = {
-      sku: order.sku.S,
-      eventTitle: `${order.sku.S} Initial Payment`,
+      sku: order.sku,
+      eventTitle: `${order.sku} Initial Payment`,
       eventDate: initialPaymentDate,
       eventType: 'Payment',
-      orderId: order.orderId.S
+      orderId: order.orderId
     }
     events = updateEvents(events, event)
   }
   if (initialPaymentDate && order.productionDeadline) {
-    const eventDate = moment(initialPaymentDate).add(order.productionDeadline.N, 'day').utc().format()
+    const eventDate = moment(initialPaymentDate).add(order.productionDeadline, 'day').utc().format()
     const event = {
-      sku: order.sku.S,
-      eventTitle: `${order.sku.S} Balance Payment`,
+      sku: order.sku,
+      eventTitle: `${order.sku} Balance Payment`,
       eventDate,
       eventType: 'Payment',
-      orderId: order.orderId.S
+      orderId: order.orderId
     }
     events = updateEvents(events, event)
   }
