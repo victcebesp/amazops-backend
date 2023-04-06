@@ -1,0 +1,512 @@
+{
+    "Records": [
+        {
+            "eventID": "8bf4fd924fd023bd68115b0f74f6285a",
+            "eventName": "MODIFY",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1680719481,
+                "Keys": {
+                    "sortKey": {
+                        "S": "ORDER#ce425f8a-9b29-4c5a-b659-076e6294d74c"
+                    },
+                    "userId": {
+                        "S": "34dd6a0c-4652-4f5d-ad72-ebd4103e4877"
+                    }
+                },
+                "NewImage": {
+                    "initialPayment": {
+                        "N": "30"
+                    },
+                    "shippingBoxes": {
+                        "L": [
+                            {
+                                "M": {
+                                    "depth": {
+                                        "N": "0"
+                                    },
+                                    "width": {
+                                        "N": "0"
+                                    },
+                                    "numberOfBoxes": {
+                                        "N": "1"
+                                    },
+                                    "weight": {
+                                        "N": "0"
+                                    },
+                                    "units": {
+                                        "N": "100"
+                                    },
+                                    "id": {
+                                        "S": "aef29cd9-c846-46d8-9b5a-9dc89ccda5ff"
+                                    },
+                                    "error": {
+                                        "S": "Amazon requirement: The box cannot be smaller than 15.2cm x 10cm x 2.5cm"
+                                    },
+                                    "height": {
+                                        "N": "0"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "orderId": {
+                        "S": "ce425f8a-9b29-4c5a-b659-076e6294d74c"
+                    },
+                    "stepsLogs": {
+                        "M": {
+                            "0": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:20+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Waiting for initial payment"
+                                    }
+                                }
+                            },
+                            "1": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:20+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Create SKU labels"
+                                    }
+                                }
+                            },
+                            "2": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:21+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Share SKU labels"
+                                    }
+                                }
+                            },
+                            "3": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:23+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Need production info"
+                                    }
+                                }
+                            },
+                            "4": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:24+01:00"
+                                    },
+                                    "name": {
+                                        "S": "On production"
+                                    }
+                                }
+                            },
+                            "5": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:31+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Need boxes info"
+                                    }
+                                }
+                            },
+                            "6": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:35+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Waiting for balance payment"
+                                    }
+                                }
+                            },
+                            "7": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:38+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Waiting to ship to transport agent"
+                                    }
+                                }
+                            },
+                            "8": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:39+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Share tracking number with transport agent"
+                                    }
+                                }
+                            },
+                            "9": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:41+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Create shipping plan on Amazon"
+                                    }
+                                }
+                            },
+                            "10": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:43+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Share shipping labels"
+                                    }
+                                }
+                            },
+                            "11": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:45+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Waiting for import payment"
+                                    }
+                                }
+                            },
+                            "12": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:48+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Ask for import tracking number"
+                                    },
+                                    "updatedAt": {
+                                        "S": "2023-04-05T19:31:17+01:00"
+                                    }
+                                }
+                            },
+                            "13": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:50+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Add tracking number to Amazon"
+                                    }
+                                }
+                            },
+                            "14": {
+                                "M": {
+                                    "name": {
+                                        "S": "On transit"
+                                    }
+                                }
+                            },
+                            "15": {
+                                "M": {
+                                    "name": {
+                                        "S": "Completed"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "importTrackingNumber": {
+                        "S": "12311"
+                    },
+                    "transportAgentTrackingNumber": {
+                        "S": "1234"
+                    },
+                    "destinationCountry": {
+                        "S": "United States"
+                    },
+                    "importStartDate": {
+                        "S": "2023-04-05T19:24:16+01:00"
+                    },
+                    "userId": {
+                        "S": "34dd6a0c-4652-4f5d-ad72-ebd4103e4877"
+                    },
+                    "createdAt": {
+                        "S": "2023-04-02T10:43:25Z"
+                    },
+                    "productionDeadline": {
+                        "N": "15"
+                    },
+                    "importType": {
+                        "S": "Plane"
+                    },
+                    "productionStartDate": {
+                        "S": "2023-04-04T19:24:15+01:00"
+                    },
+                    "sortKey": {
+                        "S": "ORDER#ce425f8a-9b29-4c5a-b659-076e6294d74c"
+                    },
+                    "importDays": {
+                        "N": "15"
+                    },
+                    "state": {
+                        "N": "14"
+                    },
+                    "sku": {
+                        "S": "FBA"
+                    },
+                    "unitsAmount": {
+                        "N": "100"
+                    }
+                },
+                "OldImage": {
+                    "initialPayment": {
+                        "N": "30"
+                    },
+                    "shippingBoxes": {
+                        "L": [
+                            {
+                                "M": {
+                                    "depth": {
+                                        "N": "0"
+                                    },
+                                    "width": {
+                                        "N": "0"
+                                    },
+                                    "numberOfBoxes": {
+                                        "N": "1"
+                                    },
+                                    "weight": {
+                                        "N": "0"
+                                    },
+                                    "units": {
+                                        "N": "100"
+                                    },
+                                    "id": {
+                                        "S": "aef29cd9-c846-46d8-9b5a-9dc89ccda5ff"
+                                    },
+                                    "error": {
+                                        "S": "Amazon requirement: The box cannot be smaller than 15.2cm x 10cm x 2.5cm"
+                                    },
+                                    "height": {
+                                        "N": "0"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "orderId": {
+                        "S": "ce425f8a-9b29-4c5a-b659-076e6294d74c"
+                    },
+                    "stepsLogs": {
+                        "M": {
+                            "0": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:20+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Waiting for initial payment"
+                                    }
+                                }
+                            },
+                            "1": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:20+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Create SKU labels"
+                                    }
+                                }
+                            },
+                            "2": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:21+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Share SKU labels"
+                                    }
+                                }
+                            },
+                            "3": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:23+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Need production info"
+                                    }
+                                }
+                            },
+                            "4": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:24+01:00"
+                                    },
+                                    "name": {
+                                        "S": "On production"
+                                    }
+                                }
+                            },
+                            "5": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:31+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Need boxes info"
+                                    }
+                                }
+                            },
+                            "6": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:35+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Waiting for balance payment"
+                                    }
+                                }
+                            },
+                            "7": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:38+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Waiting to ship to transport agent"
+                                    }
+                                }
+                            },
+                            "8": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:39+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Share tracking number with transport agent"
+                                    }
+                                }
+                            },
+                            "9": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:41+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Create shipping plan on Amazon"
+                                    }
+                                }
+                            },
+                            "10": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:43+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Share shipping labels"
+                                    }
+                                }
+                            },
+                            "11": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:45+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Waiting for import payment"
+                                    }
+                                }
+                            },
+                            "12": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:48+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Ask for import tracking number"
+                                    },
+                                    "updatedAt": {
+                                        "S": "2023-04-05T19:06:26+01:00"
+                                    }
+                                }
+                            },
+                            "13": {
+                                "M": {
+                                    "completedAt": {
+                                        "S": "2023-04-04T19:24:50+01:00"
+                                    },
+                                    "name": {
+                                        "S": "Add tracking number to Amazon"
+                                    }
+                                }
+                            },
+                            "14": {
+                                "M": {
+                                    "name": {
+                                        "S": "On transit"
+                                    }
+                                }
+                            },
+                            "15": {
+                                "M": {
+                                    "name": {
+                                        "S": "Completed"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "importTrackingNumber": {
+                        "S": "123111"
+                    },
+                    "transportAgentTrackingNumber": {
+                        "S": "1234"
+                    },
+                    "destinationCountry": {
+                        "S": "United States"
+                    },
+                    "importStartDate": {
+                        "S": "2023-04-05T19:24:16+01:00"
+                    },
+                    "userId": {
+                        "S": "34dd6a0c-4652-4f5d-ad72-ebd4103e4877"
+                    },
+                    "createdAt": {
+                        "S": "2023-04-02T10:43:25Z"
+                    },
+                    "productionDeadline": {
+                        "N": "15"
+                    },
+                    "importType": {
+                        "S": "Plane"
+                    },
+                    "productionStartDate": {
+                        "S": "2023-04-04T19:24:15+01:00"
+                    },
+                    "sortKey": {
+                        "S": "ORDER#ce425f8a-9b29-4c5a-b659-076e6294d74c"
+                    },
+                    "importDays": {
+                        "N": "15"
+                    },
+                    "state": {
+                        "N": "14"
+                    },
+                    "sku": {
+                        "S": "FBA"
+                    },
+                    "unitsAmount": {
+                        "N": "100"
+                    }
+                },
+                "SequenceNumber": "60166400000000044916664181",
+                "SizeBytes": 3516,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:793610653963:table/master-table-dev/stream/2023-04-05T17:03:55.879"
+        }
+    ]
+}
