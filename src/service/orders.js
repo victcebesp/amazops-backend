@@ -46,7 +46,7 @@ const queryAllOrders = async (userId) => {
     KeyConditionExpression: 'userId = :userId and begins_with (sortKey, :order)',
     ExpressionAttributeValues: {
       ':userId': userId,
-      ':order': 'ORDER'
+      ':order': 'ORDER#'
     }
   }
 
@@ -95,6 +95,20 @@ const updateOrderEvents = async (userId, orderId, orderEvents) => {
   await executeDynamodDBCommand(new PutCommand(input))
   return orderEvents
 }
+
+const queryAllOrderEvents = async (userId) => {
+  const input = {
+    TableName: process.env.MASTER_TABLE,
+    KeyConditionExpression: 'userId = :userId and begins_with (sortKey, :orderEvents)',
+    ExpressionAttributeValues: {
+      ':userId': userId,
+      ':orderEvents': 'ORDER_EVENTS#'
+    }
+  }
+
+  return (await executeDynamodDBCommand(new QueryCommand(input))).Items
+}
+
 module.exports = {
   createOrder,
   getOrder,
@@ -102,4 +116,5 @@ module.exports = {
   updateOrder,
   deleteOrder,
   updateOrderEvents,
+  queryAllOrderEvents
 }
