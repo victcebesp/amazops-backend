@@ -2,6 +2,7 @@ const { updateOrderEvents } = require('../service/orders')
 const { buildSuccessResponse } = require('../utils/responseBuilder')
 const moment = require('moment')
 const { unmarshall } = require('@aws-sdk/util-dynamodb')
+const { updateEvents } = require('../utils/calendarEvents')
 
 module.exports.handler = async (event) => {
   console.log(JSON.stringify(event))
@@ -27,9 +28,8 @@ const generateOrderEvents = (order) => {
   if (order.importStartDate && order.importType) {
     const event = {
       sku: order.sku,
-      eventTitle: `${order.sku} Import Start`,
       eventDate: order.importStartDate,
-      eventType: 'Import',
+      eventType: 'Import start',
       orderId: order.orderId,
       importType: order.importType
     }
@@ -39,9 +39,8 @@ const generateOrderEvents = (order) => {
     const eventDate = moment(order.importStartDate).add(order.importDays, 'day').utc().format()
     const event = {
       sku: order.sku,
-      eventTitle: `${order.sku} Import Ends`,
       eventDate,
-      eventType: 'Import',
+      eventType: 'Import end',
       orderId: order.orderId,
       importType: order.importType
     }
@@ -50,9 +49,8 @@ const generateOrderEvents = (order) => {
   if (order.productionStartDate) {
     const event = {
       sku: order.sku,
-      eventTitle: `${order.sku} Production Start`,
       eventDate: order.productionStartDate,
-      eventType: 'Production',
+      eventType: 'Production start',
       orderId: order.orderId
     }
     events = updateEvents(events, event)
@@ -61,9 +59,8 @@ const generateOrderEvents = (order) => {
     const eventDate = moment(order.productionStartDate).add(order.productionDeadline, 'day').utc().format()
     const event = {
       sku: order.sku,
-      eventTitle: `${order.sku} Production Ends`,
       eventDate,
-      eventType: 'Production',
+      eventType: 'Production end',
       orderId: order.orderId
     }
     events = updateEvents(events, event)
@@ -72,9 +69,8 @@ const generateOrderEvents = (order) => {
   if (order.initialPayment && initialPaymentDate) {
     const event = {
       sku: order.sku,
-      eventTitle: `${order.sku} Initial Payment`,
       eventDate: initialPaymentDate,
-      eventType: 'Payment',
+      eventType: 'Initial payment',
       orderId: order.orderId
     }
     events = updateEvents(events, event)
@@ -83,9 +79,8 @@ const generateOrderEvents = (order) => {
     const eventDate = moment(initialPaymentDate).add(order.productionDeadline, 'day').utc().format()
     const event = {
       sku: order.sku,
-      eventTitle: `${order.sku} Balance Payment`,
       eventDate,
-      eventType: 'Payment',
+      eventType: 'Balance payment',
       orderId: order.orderId
     }
     events = updateEvents(events, event)
@@ -96,22 +91,4 @@ const generateOrderEvents = (order) => {
 
 const getInitialPaymentDate = (order) => {
   return order.stepsLogs['0'].completedAt
-}
-
-const updateEvents = (events, newEvent) => {
-  const date = moment(newEvent.eventDate)
-  const year = date.year()
-  const month = date.month() + 1
-  const day = date.date()
-
-  const eventsOnYear = events[year] ?? {}
-  const eventsOnMonth = eventsOnYear[month] ?? {}
-  const eventsOnDay = eventsOnMonth[day] ?? []
-
-  eventsOnDay.push(newEvent)
-  eventsOnMonth[day] = eventsOnDay
-  eventsOnYear[month] = eventsOnMonth
-  events[year] = eventsOnYear
-
-  return events
 }

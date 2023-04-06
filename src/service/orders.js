@@ -1,6 +1,7 @@
 const { PutCommand, GetCommand, QueryCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb')
 const moment = require('moment')
 const { v4: uuidv4 } = require('uuid')
+const { updateEvents } = require('../utils/calendarEvents')
 const { executeDynamodDBCommand } = require('../utils/commandExecutors')
 const initialStepLogs = require('../utils/initialStepLogs.json')
 
@@ -106,7 +107,22 @@ const queryAllOrderEvents = async (userId) => {
     }
   }
 
-  return (await executeDynamodDBCommand(new QueryCommand(input))).Items
+  const orderEventsList = (await executeDynamodDBCommand(new QueryCommand(input))).Items
+  const all = orderEventsList.map(orderEvents => orderEvents.orderEvents)
+  let events = {}
+  all.forEach(each => {
+    Object.keys(each).forEach(year => {
+      Object.keys(each[year]).forEach(month => {
+        Object.keys(each[year][month]).forEach(day => {
+          each[year][month][day].forEach(event => {
+            events = updateEvents(events, event)
+          })
+        })
+      })
+    })
+  })
+  console.log('All order events', JSON.stringify(events))
+  return events
 }
 
 module.exports = {
