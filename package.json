@@ -5,7 +5,9 @@
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "sls deploy --aws-profile amazops",
+    "deploy": "sls deploy --aws-profile amazops --stage prod",
+    "deploy-dev": "sls deploy --aws-profile amazops --stage dev",
+    "deploy-test": "sls deploy --aws-profile amazops --stage test",
     "lint": "eslint .  --ext .js",
     "lint-fix": "eslint --fix .  --ext .js"
   },
