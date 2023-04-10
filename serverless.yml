@@ -18,6 +18,7 @@ provider:
           - !Ref UserPoolClient
   environment:
     MASTER_TABLE: master-table-${self:provider.stage}
+    FBA_COUNTRIES: fba-countries-${self:provider.stage}
     USER_POOL: default-user-pool-${self:provider.stage}
     USER_POOL_CLIENT: default-user-pool-client-${self:provider.stage}
 
@@ -29,10 +30,12 @@ functions:
   deleteOrder: ${file(serverless/lambda/deleteOrder.yml)}
   updateOrderEvents: ${file(serverless/lambda/updateOrderEvents.yml)}
   queryAllOrderEvents: ${file(serverless/lambda/queryAllOrderEvents.yml)}
+  scanAllFBACountries: ${file(serverless/lambda/scanAllFBACountries.yml)}
 
 resources:
   - Resources:
       MasterTable: ${file(serverless/dynamodb/masterTable.yml)}
+      FBACountriesTable: ${file(serverless/dynamodb/FBACountries.yml)}
       CreateOrderRole: ${file(serverless/iam/createOrderRole.yml)}
       GetOrderRole: ${file(serverless/iam/getOrderRole.yml)}
       QueryAllOrdersRole: ${file(serverless/iam/queryAllOrdersRole.yml)}
@@ -40,6 +43,7 @@ resources:
       DeleteOrderRole: ${file(serverless/iam/deleteOrderRole.yml)}
       UpdateOrderEventsRole: ${file(serverless/iam/updateOrderEventsRole.yml)}
       QueryAllOrderEventsRole: ${file(serverless/iam/queryAllOrderEventsRole.yml)}
+      ScanAllFBACountriesRole: ${file(serverless/iam/scanAllFBACountriesRole.yml)}
       UserPool: ${file(serverless/cognito/userPool.yml)}
       UserPoolClient: ${file(serverless/cognito/userPoolClient.yml)}
       UserPoolDomain: ${file(serverless/cognito/userPoolDomain.yml)}
