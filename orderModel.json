@@ -7,6 +7,8 @@
     "!importType": "SEA",
     "state": 0,
     "initialPayment": 0.3,
+    "initialPaymentDate": "2022-03-15 13:50:00Z",
+    "balancePaymentDate": "2022-03-15 13:50:00Z",
     "productionDeadline": 15,
     "productionStartDate": "2022-03-15 13:50:00Z",
     "shippingBoxes": [

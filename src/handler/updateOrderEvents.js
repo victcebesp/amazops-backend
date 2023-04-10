@@ -69,7 +69,7 @@ const generateOrderEvents = (order) => {
   if (order.initialPayment && initialPaymentDate) {
     const event = {
       sku: order.sku,
-      eventDate: initialPaymentDate,
+      eventDate: order.initialPaymentDate ?? initialPaymentDate,
       eventType: 'Initial payment',
       orderId: order.orderId
     }
@@ -79,7 +79,7 @@ const generateOrderEvents = (order) => {
     const eventDate = moment(initialPaymentDate).add(order.productionDeadline, 'day').utc().format()
     const event = {
       sku: order.sku,
-      eventDate,
+      eventDate: order.balancePaymentDate ?? eventDate,
       eventType: 'Balance payment',
       orderId: order.orderId
     }
