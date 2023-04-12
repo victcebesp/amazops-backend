@@ -1,0 +1,8 @@
+handler: ./src/handler/getOrder.handler
+role: QuerySubscriptionRole
+events:
+  - httpApi:
+      path: /subscription
+      method: get
+      authorizer:
+        name: jwtAuthorizer

@@ -33,6 +33,7 @@ functions:
   queryAllOrderEvents: ${file(serverless/lambda/queryAllOrderEvents.yml)}
   scanAllFBACountries: ${file(serverless/lambda/scanAllFBACountries.yml)}
   stripeWebhook: ${file(serverless/lambda/stripeWebhook.yml)}
+  querySubscription: ${file(serverless/lambda/querySubscription.yml)}
 
 resources:
   - Resources:
@@ -47,6 +48,7 @@ resources:
       QueryAllOrderEventsRole: ${file(serverless/iam/queryAllOrderEventsRole.yml)}
       ScanAllFBACountriesRole: ${file(serverless/iam/scanAllFBACountriesRole.yml)}
       StripeWebhookRole: ${file(serverless/iam/stripeWebhookRole.yml)}
+      QuerySubscriptionRole: ${file(serverless/iam/querySubscriptionRole.yml)}
       UserPool: ${file(serverless/cognito/userPool.yml)}
       UserPoolClient: ${file(serverless/cognito/userPoolClient.yml)}
       UserPoolDomain: ${file(serverless/cognito/userPoolDomain.yml)}

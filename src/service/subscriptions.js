@@ -41,6 +41,19 @@ const querySubscriptionBySubscriptionId = async (subscriptionId, stripeCustomerI
   return (await executeDynamodDBCommand(new QueryCommand(input))).Items[0]
 }
 
+const querySubscription = async (userId) => {
+  const input = {
+    TableName: process.env.MASTER_TABLE,
+    KeyConditionExpression: 'userId = :userId and begins_with (sortKey, :order)',
+    ExpressionAttributeValues: {
+      ':userId': userId,
+      ':order': 'SUBSCRIPTION#'
+    }
+  }
+
+  return (await executeDynamodDBCommand(new QueryCommand(input))).Items[0]
+}
+
 module.exports = {
   createSubscription,
   deleteSubscription,
