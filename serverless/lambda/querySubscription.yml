@@ -1,4 +1,4 @@
-handler: ./src/handler/getOrder.handler
+handler: ./src/handler/querySubscription.handler
 role: QuerySubscriptionRole
 events:
   - httpApi:
@@ -6,3 +6,5 @@ events:
       method: get
       authorizer:
         name: jwtAuthorizer
+environment:
+  STRIPE_KEY: ${ssm:STRIPE_KEY}

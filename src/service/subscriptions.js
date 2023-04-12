@@ -44,10 +44,10 @@ const querySubscriptionBySubscriptionId = async (subscriptionId, stripeCustomerI
 const querySubscription = async (userId) => {
   const input = {
     TableName: process.env.MASTER_TABLE,
-    KeyConditionExpression: 'userId = :userId and begins_with (sortKey, :order)',
+    KeyConditionExpression: 'userId = :userId and begins_with (sortKey, :subscription)',
     ExpressionAttributeValues: {
       ':userId': userId,
-      ':order': 'SUBSCRIPTION#'
+      ':subscription': 'SUBSCRIPTION#'
     }
   }
 
