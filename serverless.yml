@@ -21,6 +21,7 @@ provider:
     FBA_COUNTRIES: fba-countries-${self:provider.stage}
     USER_POOL: default-user-pool-${self:provider.stage}
     USER_POOL_CLIENT: default-user-pool-client-${self:provider.stage}
+    SUBSCRIPTION_INDEX: subscription-index
 
 functions:
   createOrder: ${file(serverless/lambda/createOrder.yml)}
@@ -31,6 +32,7 @@ functions:
   updateOrderEvents: ${file(serverless/lambda/updateOrderEvents.yml)}
   queryAllOrderEvents: ${file(serverless/lambda/queryAllOrderEvents.yml)}
   scanAllFBACountries: ${file(serverless/lambda/scanAllFBACountries.yml)}
+  stripeWebhook: ${file(serverless/lambda/stripeWebhook.yml)}
 
 resources:
   - Resources:
@@ -44,6 +46,7 @@ resources:
       UpdateOrderEventsRole: ${file(serverless/iam/updateOrderEventsRole.yml)}
       QueryAllOrderEventsRole: ${file(serverless/iam/queryAllOrderEventsRole.yml)}
       ScanAllFBACountriesRole: ${file(serverless/iam/scanAllFBACountriesRole.yml)}
+      StripeWebhookRole: ${file(serverless/iam/stripeWebhookRole.yml)}
       UserPool: ${file(serverless/cognito/userPool.yml)}
       UserPoolClient: ${file(serverless/cognito/userPoolClient.yml)}
       UserPoolDomain: ${file(serverless/cognito/userPoolDomain.yml)}

@@ -1,0 +1,9 @@
+handler: ./src/handler/stripeWebhook.handler
+role: StripeWebhookRole
+events:
+  - httpApi:
+      path: /webhook
+      method: post
+environment:
+  STRIPE_KEY: ${ssm:STRIPE_KEY}
+  STRIPE_WEBHOOK_SECRET: ${ssm:STRIPE_WEBHOOK_SECRET}

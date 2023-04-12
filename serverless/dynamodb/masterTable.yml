@@ -6,6 +6,8 @@ Properties:
       AttributeType: S
     - AttributeName: sortKey
       AttributeType: S
+    - AttributeName: stripeCustomerId
+      AttributeType: S
   KeySchema:
     - AttributeName: userId
       KeyType: HASH
@@ -14,3 +16,12 @@ Properties:
   BillingMode: PAY_PER_REQUEST
   StreamSpecification:
     StreamViewType: NEW_AND_OLD_IMAGES
+  GlobalSecondaryIndexes:
+    - IndexName: ${self:provider.environment.SUBSCRIPTION_INDEX}
+      KeySchema:
+        - AttributeName: sortKey
+          KeyType: HASH
+        - AttributeName: stripeCustomerId
+          KeyType: RANGE
+      Projection:
+        ProjectionType: ALL
