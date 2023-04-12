@@ -27,7 +27,7 @@ const deleteSubscription = async (userId, subscriptionId) => {
   await executeDynamodDBCommand(new DeleteCommand(input))
 }
 
-const querySubscription = async (subscriptionId, stripeCustomerId) => {
+const querySubscriptionBySubscriptionId = async (subscriptionId, stripeCustomerId) => {
   const input = {
     TableName: process.env.MASTER_TABLE,
     KeyConditionExpression: 'sortKey = :subscriptionId and stripeCustomerId = :stripeCustomerId',
@@ -44,5 +44,6 @@ const querySubscription = async (subscriptionId, stripeCustomerId) => {
 module.exports = {
   createSubscription,
   deleteSubscription,
+  querySubscriptionBySubscriptionId,
   querySubscription
 }

@@ -1,4 +1,4 @@
-const { createSubscription, deleteSubscription, querySubscription } = require('../service/subscriptions')
+const { createSubscription, deleteSubscription, querySubscriptionBySubscriptionId } = require('../service/subscriptions')
 const { buildSuccessResponse, buildFailureResponse } = require('../utils/responseBuilder')
 const stripe = require('stripe')(process.env.STRIPE_KEY)
 
@@ -26,7 +26,7 @@ module.exports.handler = async (event) => {
   } else if (stripeEvent.type === 'customer.subscription.deleted') {
     const stripeCustomerId = stripeEvent.data.object.customer
     const subscriptionId = stripeEvent.data.object.id
-    return querySubscription(subscriptionId, stripeCustomerId)
+    return querySubscriptionBySubscriptionId(subscriptionId, stripeCustomerId)
       .then(subscription => deleteSubscription(subscription.userId, subscriptionId))
       .then(() => buildSuccessResponse(200))
       .catch((error) => buildFailureResponse(500, `Error deleting the subscription. ${error.message}`))
