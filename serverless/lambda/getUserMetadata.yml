@@ -1,0 +1,8 @@
+handler: ./src/handler/getUserMetadata.handler
+role: GetUserMetadataRole
+events:
+  - httpApi:
+      path: /metadata
+      method: get
+      authorizer:
+        name: jwtAuthorizer
