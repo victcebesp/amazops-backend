@@ -5,5 +5,5 @@ events:
       path: /webhook
       method: post
 environment:
-  STRIPE_KEY: ${ssm:STRIPE_KEY}
-  STRIPE_WEBHOOK_SECRET: ${ssm:STRIPE_WEBHOOK_SECRET}
+  STRIPE_KEY: ${ssm:STRIPE_KEY-${self:provider.stage}}
+  STRIPE_WEBHOOK_SECRET: ${ssm:STRIPE_WEBHOOK_SECRET-${self:provider.stage}}
