@@ -1,0 +1,10 @@
+handler: ./src/handler/createCustomerPortalSession.handler
+role: CreateCustomerPortalSessionRole
+events:
+  - httpApi:
+      path: /customer-portal-session
+      method: post
+      authorizer:
+        name: jwtAuthorizer
+environment:
+  STRIPE_KEY: ${ssm:STRIPE_KEY-${self:provider.stage}}
