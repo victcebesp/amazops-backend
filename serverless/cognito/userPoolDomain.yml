@@ -1,4 +1,0 @@
-Type: AWS::Cognito::UserPoolDomain 
-Properties:
-  UserPoolId: !Ref UserPool 
-  Domain: ${self:provider.stage}-amazops
