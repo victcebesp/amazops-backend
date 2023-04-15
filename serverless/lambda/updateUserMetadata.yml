@@ -1,0 +1,8 @@
+handler: ./src/handler/updateUserMetadata.handler
+role: UpdateUserMetadataRole
+events:
+  - httpApi:
+      path: /metadata
+      method: post
+      authorizer:
+        name: jwtAuthorizer
