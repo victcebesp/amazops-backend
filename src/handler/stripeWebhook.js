@@ -29,7 +29,9 @@ module.exports.handler = async (event) => {
     const stripeCustomerId = stripeEvent.data.object.customer
     const subscriptionId = stripeEvent.data.object.id
     return querySubscriptionBySubscriptionId(subscriptionId, stripeCustomerId)
-      .then(subscription => deleteSubscription(subscription.userId, subscriptionId))
+      .then(subscription => deleteSubscription(subscription.userId, subscriptionId)
+        .then(() => updateUserMetadata(subscription.userId, 'referral', ''))
+      )
       .then(() => buildSuccessResponse(200))
       .catch((error) => buildFailureResponse(500, `Error deleting the subscription. ${error.message}`))
   } else {
