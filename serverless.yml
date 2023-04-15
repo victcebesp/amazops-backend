@@ -55,4 +55,3 @@ resources:
       CreateCustomerPortalSessionRole: ${file(serverless/iam/createCustomerPortalSessionRole.yml)}
       UserPool: ${file(serverless/cognito/userPool.yml)}
       UserPoolClient: ${file(serverless/cognito/userPoolClient.yml)}
-      UserPoolDomain: ${file(serverless/cognito/userPoolDomain.yml)}
