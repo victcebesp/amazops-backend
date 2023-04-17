@@ -6,7 +6,7 @@ Properties:
     - - !Ref "AWS::StackName"
       - "-"
       - !Ref "AWS::Region"
-      - "-updateOrderExecuteRole"
+      - "-updateUserMetadataExecuteRole"
   ManagedPolicyArns:
     - arn:aws:iam::aws:policy/AWSOpsWorksCloudWatchLogs
   AssumeRolePolicyDocument:
@@ -24,7 +24,7 @@ Properties:
         - - !Ref "AWS::StackName"
           - "-"
           - !Ref "AWS::Region"
-          - "-updateOrderExecutePolicy"
+          - "-updateUserMetadataExecutePolicy"
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -41,12 +41,6 @@ Properties:
                 - ":*"            
           - Effect: Allow
             Action:
-              - dynamodb:PutItem
-              - dynamodb:GetItem
+              - dynamodb:UpdateItem
             Resource: 
-                - "Fn::Join": ["", ["arn:aws:dynamodb:" , {"Ref": "AWS::Region"}, ":", {"Ref": "AWS::AccountId"} , ":table/${self:provider.environment.MASTER_TABLE}"]]
-          - Effect: Allow
-            Action:
-              - dynamodb:Scan
-            Resource: 
-                - "Fn::Join": ["", ["arn:aws:dynamodb:" , {"Ref": "AWS::Region"}, ":", {"Ref": "AWS::AccountId"} , ":table/${self:provider.environment.FBA_COUNTRIES}"]]
+              - "Fn::Join": ["", ["arn:aws:dynamodb:" , {"Ref": "AWS::Region"}, ":", {"Ref": "AWS::AccountId"} , ":table/${self:provider.environment.MASTER_TABLE}"]]

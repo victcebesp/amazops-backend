@@ -36,6 +36,7 @@ functions:
   querySubscription: ${file(serverless/lambda/querySubscription.yml)}
   getUserMetadata: ${file(serverless/lambda/getUserMetadata.yml)}
   createCustomerPortalSession: ${file(serverless/lambda/createCustomerPortalSession.yml)}
+  updateUserMetadata: ${file(serverless/lambda/updateUserMetadata.yml)}
 
 resources:
   - Resources:
@@ -53,5 +54,6 @@ resources:
       QuerySubscriptionRole: ${file(serverless/iam/querySubscriptionRole.yml)}
       GetUserMetadataRole: ${file(serverless/iam/getUserMetadataRole.yml)}
       CreateCustomerPortalSessionRole: ${file(serverless/iam/createCustomerPortalSessionRole.yml)}
+      UpdateUserMetadataRole: ${file(serverless/iam/updateUserMetadataRole.yml)}
       UserPool: ${file(serverless/cognito/userPool.yml)}
       UserPoolClient: ${file(serverless/cognito/userPoolClient.yml)}
