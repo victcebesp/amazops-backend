@@ -4,7 +4,7 @@ Properties:
     RecoveryMechanisms:
       - Name: verified_email
         Priority: 1
-  AliasAttributes: 
+  UsernameAttributes:
     - email
   EmailConfiguration: 
     EmailSendingAccount: COGNITO_DEFAULT
