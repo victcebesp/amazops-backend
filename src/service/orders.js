@@ -84,6 +84,18 @@ const deleteOrder = async (userId, orderId) => {
   await executeDynamodDBCommand(new DeleteCommand(input))
 }
 
+const deleteOrderEvents = async (userId, orderId) => {
+  const input = {
+    TableName: process.env.MASTER_TABLE,
+    Key: {
+      userId,
+      sortKey: `ORDER_EVENTS#${orderId}`
+    }
+  }
+
+  await executeDynamodDBCommand(new DeleteCommand(input))
+}
+
 const updateOrderEvents = async (userId, orderId, orderEvents) => {
   const input = {
     TableName: process.env.MASTER_TABLE,
@@ -131,6 +143,7 @@ module.exports = {
   queryAllOrders,
   updateOrder,
   deleteOrder,
+  deleteOrderEvents,
   updateOrderEvents,
   queryAllOrderEvents
 }
