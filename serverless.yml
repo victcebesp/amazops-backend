@@ -19,6 +19,7 @@ provider:
   environment:
     MASTER_TABLE: master-table-${self:provider.stage}
     FBA_COUNTRIES: fba-countries-${self:provider.stage}
+    CONFIGURATION: configuration-${self:provider.stage}
     USER_POOL: default-user-pool-${self:provider.stage}
     USER_POOL_CLIENT: default-user-pool-client-${self:provider.stage}
     SUBSCRIPTION_INDEX: subscription-index
@@ -37,11 +38,13 @@ functions:
   getUserMetadata: ${file(serverless/lambda/getUserMetadata.yml)}
   createCustomerPortalSession: ${file(serverless/lambda/createCustomerPortalSession.yml)}
   updateUserMetadata: ${file(serverless/lambda/updateUserMetadata.yml)}
+  getStepsConfiguration: ${file(serverless/lambda/getStepsConfiguration.yml)}
 
 resources:
   - Resources:
       MasterTable: ${file(serverless/dynamodb/masterTable.yml)}
       FBACountriesTable: ${file(serverless/dynamodb/FBACountries.yml)}
+      ConfigurationTable: ${file(serverless/dynamodb/configuration.yml)}
       CreateOrderRole: ${file(serverless/iam/createOrderRole.yml)}
       GetOrderRole: ${file(serverless/iam/getOrderRole.yml)}
       QueryAllOrdersRole: ${file(serverless/iam/queryAllOrdersRole.yml)}
@@ -55,5 +58,6 @@ resources:
       GetUserMetadataRole: ${file(serverless/iam/getUserMetadataRole.yml)}
       CreateCustomerPortalSessionRole: ${file(serverless/iam/createCustomerPortalSessionRole.yml)}
       UpdateUserMetadataRole: ${file(serverless/iam/updateUserMetadataRole.yml)}
+      GetStepsConfigurationRole: ${file(serverless/iam/getStepsConfigurationRole.yml)}
       UserPool: ${file(serverless/cognito/userPool.yml)}
       UserPoolClient: ${file(serverless/cognito/userPoolClient.yml)}
