@@ -8,3 +8,6 @@ Properties:
     - AttributeName: name
       KeyType: HASH
   BillingMode: PAY_PER_REQUEST
+  DeletionProtectionEnabled: True
+  PointInTimeRecoverySpecification:
+    PointInTimeRecoveryEnabled: True
