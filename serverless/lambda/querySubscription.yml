@@ -8,3 +8,4 @@ events:
         name: jwtAuthorizer
 environment:
   STRIPE_KEY: ${ssm:STRIPE_KEY-${self:provider.stage}}
+  IS_FREE: false

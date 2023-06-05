@@ -1,11 +1,11 @@
 Type: AWS::DynamoDB::Table
 Properties:
-  TableName: ${self:provider.environment.FBA_COUNTRIES}
+  TableName: ${self:provider.environment.CONFIGURATION}
   AttributeDefinitions:
-    - AttributeName: name
+    - AttributeName: key
       AttributeType: S
   KeySchema:
-    - AttributeName: name
+    - AttributeName: key
       KeyType: HASH
   BillingMode: PAY_PER_REQUEST
   DeletionProtectionEnabled: True
