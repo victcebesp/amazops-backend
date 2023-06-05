@@ -5,6 +5,7 @@ const stripe = require('stripe')(process.env.STRIPE_KEY)
 
 module.exports.handler = async (event) => {
   console.log('Input event:', event)
+  if (process.env.IS_FREE === 'true') return buildSuccessResponse(200, { plan: { active: true } })
   const token = event.headers.authorization.split(' ')[1]
   const decodedToken = jwt.decode(token, { complete: true })
   const sub = decodedToken.payload.sub
