@@ -1,0 +1,8 @@
+handler: ./src/handler/getStepsConfiguration.handler
+role: GetStepsConfigurationRole
+events:
+  - httpApi:
+      path: /configuration/steps
+      method: get
+      authorizer:
+        name: jwtAuthorizer

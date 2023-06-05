@@ -1,0 +1,82 @@
+[
+    {
+        "order": "0",
+        "stepName": "initial-payment",
+        "label": "Waiting for initial payment"
+    },
+    {
+        "order": "1",
+        "stepName": "create-sku-label",
+        "label": "Create SKU labels"
+    },
+    {
+        "order": "2",
+        "stepName": "share-sku-labels",
+        "label": "Share SKU labels"
+    },
+    {
+        "order": "3",
+        "stepName": "production-information",
+        "label": "Need production info"
+    },
+    {
+        "order": "4",
+        "stepName": "wait-production-completion",
+        "label": "On production"
+    },
+    {
+        "order": "5",
+        "stepName": "ask-boxes-information",
+        "label": "Need boxes info"
+    },
+    {
+        "order": "6",
+        "stepName": "balance-payment",
+        "label": "Waiting for balance payment"
+    },
+    {
+        "order": "7",
+        "stepName": "send-goods-to-transport-agent",
+        "label": "Waiting to ship to transport agent"
+    },
+    {
+        "order": "8",
+        "stepName": "share-tracking-number-with-trasnport-agent",
+        "label": "Share tracking number with transport agent"
+    },
+    {
+        "order": "9",
+        "stepName": "create-shipping-plan",
+        "label": "Create shipping plan on Amazon"
+    },
+    {
+        "order": "10",
+        "stepName": "share-shipping-labels-with-transport-agent",
+        "label": "Share shipping labels"
+    },
+    {
+        "order": "11",
+        "stepName": "complete-transport-payment",
+        "label": "Waiting for import payment"
+    },
+    {
+        "order": "12",
+        "stepName": "ask-for-import-tracking-number",
+        "label": "Waiting for import payment"
+    },
+    {
+        "order": "13",
+        "stepName": "add-tracking-number-to-amazon",
+        "label": "Add tracking number to Amazon"
+    },
+    {
+        "order": "14",
+        "stepName": "wait-for-shipment",
+        "label": "On transit"
+    },
+    {
+        "order": "15",
+        "stepName": "completed",
+        "label": "Completed"
+    }
+]

@@ -25,3 +25,6 @@ Properties:
           KeyType: RANGE
       Projection:
         ProjectionType: ALL
+  DeletionProtectionEnabled: True
+  PointInTimeRecoverySpecification:
+    PointInTimeRecoveryEnabled: True
